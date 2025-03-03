@@ -22,24 +22,15 @@ function loadFortunes() {
 /**
  * Filters fortunes based on category.
  *
- * For the student assignment, please remove the example filtering logic below
- * and replace it with your own implementation if desired.
- *
  * @param {Array<Object>} fortunes - Array of fortune objects.
  * @param {string} [category] - Optional category to filter by.
  * @returns {Array<Object>} The filtered array of fortune objects.
  */
 function filterFortunes(fortunes, category) {
-  // TODO: BEGIN STUDENT ASSIGNMENT
-  // TODO: If there is no category, return the original array
-  true; // replace this with your code here
-  // TODO: END STUDENT ASSIGNMENT
-
-  // TODO: BEGIN STUDENT ASSIGNMENT
-  // TODO: Create an array of fortunes matching category
-  true; // replace this with your code here
-  // TODO: END STUDENT ASSIGNMENT
-  return fortunes;
+  if (!category) {
+    return fortunes;
+  }
+  return fortunes.filter(fortune => fortune.category === category);
 }
 
 /**
@@ -49,11 +40,8 @@ function filterFortunes(fortunes, category) {
  * @returns {string} The text of a randomly selected fortune.
  */
 function getRandomFortune(fortunes) {
-  // TODO: BEGIN STUDENT ASSIGNMENT
-  // TODO: msg must be changed to be a random fortune
-  const msg = `Get a random fortune from the ${fortunes.length} fortunes`;  // replace this with your code here
-  // TODO: END STUDENT ASSIGNMENT
-  return msg;
+  const randomFortune = Math.floor(Math.random() * fortunes.length);
+  return fortunes[randomFortune].text;
 }
 
 /**
@@ -65,7 +53,7 @@ function getRandomFortune(fortunes) {
  *
  * @example
  * To use the module, supply an optional filter:
- * const msg = fortunateCow("motivational");
+ * const msg = fortunateCow('motivational');
  * console.log(msg);
  */
 export function fortunateCow(category) {
@@ -78,15 +66,11 @@ export function fortunateCow(category) {
 
   // If no fortunes match the filters, return a default message.
   if (!fortunes.length) {
-    return "No fortune found matching your criteria.";
+    return 'No fortune found matching your criteria.';
   }
 
   const fortune = getRandomFortune(fortunes);
 
-  // TODO: BEGIN STUDENT ASSIGNMENT
-  // TODO: Replace msg by calling the say function
-  const fortuneMessage = `${fortune} and then a cow using its say() function`;  // replace this with your code here
-  // TODO: END STUDENT ASSIGNMENT
+  const fortuneMessage = say({ text: fortune });
   return fortuneMessage;
-
 }

@@ -32,9 +32,23 @@ const argv = yargs(hideBin(process.argv))
 
 // Generate the fortune message using the fortunateCow() function.
 const fortuneMessage = fortunateCow(argv.category);
-// TODO: Student Assignment
-// TODO: Put fortuneMessage inside a decorative box using boxen.
-const boxedMessage = `Using boxen, add a box around the results: "${fortuneMessage}"`; // replace this with your code here
-// TODO: END STUDENT ASSIGNMENT
+const boxedMessage = boxen(fortuneMessage, {
+  padding: 2,
+  margin: 1,
+  borderStyle: {
+    topLeft: ' <',
+    topRight: '>',
+    bottomLeft: ' <',
+    bottomRight: '>',
+    top: '~',
+    bottom: '~',
+    left: '{=',
+    right: '=}'
+  },
+  borderColor: 'cyan',
+  backgroundColor: 'black',
+  title: 'Cowsay',
+  titleAlignment: 'center'
+});
 
-console.log(boxedMessage)
+console.log(boxedMessage);
