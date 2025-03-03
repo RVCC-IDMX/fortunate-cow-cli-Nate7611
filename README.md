@@ -22,10 +22,10 @@ This command executes the `cli.mjs` file, which uses `yargs` to parse command li
 node cli.mjs --category motivational
 ```
 
-Alternatively, you can pass additional CLI arguments when using npm start by including a double dash. For example:
+Alternatively, you can pass additional CLI arguments when using npm start by including a quoted double dash. For example:
 
 ```
-npm start -- --category motivational
+npm start "--" --category motivational
 ```
 
 ## Project Structure
